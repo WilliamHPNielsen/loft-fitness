@@ -1,4 +1,5 @@
 import Data.Char
+import Control.Monad
 
 hardcorefy :: [Char] -> [Char]
 hardcorefy x = map toUpper x
@@ -9,11 +10,9 @@ getLine' = do
   return tt
 
 main = do
-  putStrLn "Input training type (press q to quit)"
+  putStrLn "Input training type (press Q to quit)"
   trainingtype <- getLine'
-  if trainingtype == "q"
-    then return ()
-    else do
-        let hctt = hardcorefy trainingtype
-        putStrLn ("Registered training type: " ++ hctt)
-        main
+  when (not (elem trainingtype ["q", "Q"])) $ do
+    let hctt = hardcorefy trainingtype
+    putStrLn ("Registered training type: " ++ hctt)
+    main
