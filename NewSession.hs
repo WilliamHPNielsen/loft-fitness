@@ -1,14 +1,10 @@
 module NewSession
-  ( Session
-  , startNewSession
+  (
+    startNewSession
   ) where
 
-import Data.Time
+import SessionTypes
 import System.IO
-
-data Session = Session { time :: ZonedTime
-                       , kind :: String }
-               deriving Show
 
 makeSession :: String -> IO Session
 makeSession kind = do
