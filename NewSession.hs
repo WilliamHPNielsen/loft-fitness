@@ -6,6 +6,7 @@ module NewSession
 import SessionTypes
 import System.IO
 import Data.Time
+import Text.Read
 
 makeSession :: String -> IO Session
 makeSession kind = do
@@ -28,3 +29,15 @@ startNewSession = do
   return ()
 
   
+getIntMaybe :: IO (Maybe Int)
+getIntMaybe = do
+  userinput <- getLine
+  return (readMaybe userinput :: Maybe Int)
+  
+getSet :: IO ()
+getSet = do
+  putStrLn "Gimme"
+  val <- getIntMaybe
+  case val of
+    Just _ -> putStrLn "Thanks"
+    Nothing -> getSet
