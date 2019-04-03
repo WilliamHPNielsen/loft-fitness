@@ -1,5 +1,6 @@
 import Data.Char
 import Control.Monad
+import SessionTypes
 import NewSession
 
 hardcorefy :: [Char] -> [Char]

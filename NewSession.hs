@@ -5,11 +5,12 @@ module NewSession
 
 import SessionTypes
 import System.IO
+import Data.Time
 
 makeSession :: String -> IO Session
 makeSession kind = do
   time <- getZonedTime
-  let ses = Session {time=time, kind=kind}
+  let ses = Session {time=time, kind=kind, sets=[]}
   return ses
 
 writeSession :: Session -> IO ()
@@ -25,4 +26,5 @@ startNewSession = do
   writeSession ses
   print ses
   return ()
+
   
