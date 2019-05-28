@@ -1,0 +1,6 @@
+# emacs autosaves should not be tracked
+*~
+
+# haskell auxiliary files
+*.hi
+*.o
