@@ -3,20 +3,8 @@ import Control.Monad
 import SessionTypes
 import NewSession
 
-hardcorefy :: [Char] -> [Char]
-hardcorefy x = map toUpper x
-
-getLine' :: IO String
-getLine' = do
-  tt <- getLine
-  return tt
-
+main :: IO ()
 main = do
-  startNewSession
-  putStrLn "Input training type (press Q to quit)"
-  trainingtype <- getLine'
-  when (not $ elem trainingtype ["q", "Q"]) $ do
-    let hctt = hardcorefy trainingtype
-    putStrLn ("Registered training type: " ++ hctt)
-    main
-
+  ses <- getSession
+  writeSession ses
+  return ()
