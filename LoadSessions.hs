@@ -1,5 +1,7 @@
 module LoadSessions (
-  readLogFile
+  readLogFile,
+  readSession,
+  extractFromSets
   ) where
 
 import System.IO
@@ -14,4 +16,7 @@ readLogFile :: FilePath -> IO [Session]
 readLogFile filename = do
   contents <- readFile filename
   return $ fmap readSession $ lines contents
-  
+
+extractFromSets :: ( TrainingSet -> a) -> Session -> [a]
+extractFromSets property ses = map property $ sets ses
+
