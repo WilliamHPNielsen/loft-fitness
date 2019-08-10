@@ -1,5 +1,6 @@
 module Display
-  ( displaySession
+  ( displaySession,
+    prettifySession
   ) where
 
 import SessionTypes

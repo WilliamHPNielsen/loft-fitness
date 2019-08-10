@@ -5,6 +5,7 @@ module NewSession
   , writeSession
   ) where
 
+import Display
 import SessionTypes
 import System.IO
 import Data.Time
@@ -84,6 +85,7 @@ getSet = do
 
 getSessionSets :: Session -> IO Session
 getSessionSets ses = do
+  putStrLn $ prettifySession ses
   set <- getSet
   case set of
     Nothing -> return ses
