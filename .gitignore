@@ -4,3 +4,9 @@
 # haskell auxiliary files
 *.hi
 *.o
+
+# Cabal fallout
+dist/
+dist-newstyle/
+cabal.project.local
+.ghc.environment.*
