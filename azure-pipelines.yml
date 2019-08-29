@@ -16,6 +16,7 @@ steps:
   displayName: 'Run a one-line script'
 
 - script: |
-    cabal v2-configure
-    cabal v2-build
+    cabal --version
+    cabal configure
+    cabal build
   displayName: 'Build the package'
