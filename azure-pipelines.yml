@@ -17,13 +17,10 @@ steps:
 
 - script: |
     cabal update
-  displayName: 'Update cabal'
-
-- script: |
-    cabal install --only dependencies
-  displayName: 'Install dependencies'
-
-- script: |
     cabal configure
+    cabal install --only-dependencies
+  displayName: 'Prepare cabal'
+
+- script: |
     cabal build
   displayName: 'Build the package'
