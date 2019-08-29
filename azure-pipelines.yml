@@ -16,6 +16,10 @@ steps:
   displayName: 'Run a one-line script'
 
 - script: |
+    cabal update
+  displayName: 'Update cabal'
+
+- script: |
     cabal --version
     cabal configure
     cabal build
