@@ -20,7 +20,10 @@ steps:
   displayName: 'Update cabal'
 
 - script: |
-    cabal --version
+    cabal install --only dependencies
+  displayName: 'Install dependencies'
+
+- script: |
     cabal configure
     cabal build
   displayName: 'Build the package'
