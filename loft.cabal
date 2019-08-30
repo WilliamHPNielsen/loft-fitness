@@ -60,7 +60,7 @@ executable loft
   -- other-extensions:
 
   -- Other library packages from which modules are imported.
-  build-depends:       base >=4.8.2 && <4.13, time >=1.6 && <1.9
+  build-depends:       base >=4.10.0.0 && <4.13, time >=1.6 && <1.9
 
   -- Directories containing source files.
   -- hs-source-dirs:
