@@ -19,6 +19,7 @@ steps:
     sudo apt-get update
     sudo apt-get install haskell-platform
     cabal update
+    ghc-pkg list
     cabal configure
     cabal install --only-dependencies
   displayName: 'Prepare cabal'
