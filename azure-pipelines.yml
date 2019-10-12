@@ -12,4 +12,6 @@ steps:
 - script: stack upgrade
   displayName: 'Prepare stack'
 
+- script: stack build
+  displayName: 'Build the loft package'
 
