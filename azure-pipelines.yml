@@ -9,7 +9,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: sudo curl -sSL https://get.haskellstack.org/ | sh
-  displayName: 'Install stack'
+- script: stack upgrade
+  displayName: 'Prepare stack'
 
 
