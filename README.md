@@ -36,6 +36,8 @@ This will execute `loft`.
 
 You use `loft` by entering sessions. First provide the name of the session you are currently logging, e.g. `bench press` or `push-ups`. Then enter weights and reps for each set until you are done, at which point you should enter `q` or `Q` as either weights or reps. This exits `loft`. You can rerun `loft` to log your next exercise.
 
+Note that weights can only be floats and reps can only be integers. If you enter something that can not be parsed as the appropriate type, `loft` will ask you to retype. This is a user-friendly feature 😊.
+
 The logfile with your weights and reps is called `sessions.log`. That name is currently hardcoded.
 
 ## Future plans
