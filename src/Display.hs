@@ -1,6 +1,6 @@
 module Display
-  ( displaySession,
-    prettifySession
+  ( displaySession  
+  , prettifySession
   ) where
 
 import SessionTypes
@@ -27,11 +27,15 @@ lineBuilder :: [String] -> Int -> String -> String
 lineBuilder mssgs max_size separator =
   concat $ map (cellBuilder "|" max_size) $ mssgs
 
+showWeight :: Weight -> String
+showWeight BodyWeight = "bw"
+showWeight (TrainingWeight a) = show a
+
 prettifySession :: Session -> String
 prettifySession ses = concat $ intersperse "\n" [a, b, c, d]
   where a = kind ses
         b = concat $ replicate (length a) "-"
-        ws = map show $ extractFromSets weight ses
+        ws = map showWeight $ extractFromSets weight ses
         rs = map show $ extractFromSets reps ses
         ms = maximum [maximum . map length $ ws, maximum. map length $ rs]
         c = lineBuilder ws ms "|"

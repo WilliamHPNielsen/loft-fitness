@@ -1,12 +1,16 @@
 module SessionTypes
   ( Session(..)
   , TrainingSet(..)
+  , Weight(..)
   , addSet
   ) where
 
 import Data.Time
 
-data TrainingSet = TrainingSet { weight :: Float,
+data Weight = BodyWeight | TrainingWeight Float
+  deriving (Show, Read)
+
+data TrainingSet = TrainingSet { weight :: Weight,
                                  reps :: Int}
                    deriving (Show, Read)
 
