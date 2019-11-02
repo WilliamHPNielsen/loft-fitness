@@ -81,7 +81,8 @@ getSet = do
       r <- getReps
       case r of
         Right Stop -> return Nothing
-        _ -> return $ Just (TrainingSet { weight = fromLeft 0 w, reps = fromLeft 0 r })
+        _ -> return $ Just (TrainingSet { weight = TrainingWeight $ fromLeft 0 w,
+                                          reps = fromLeft 0 r })
 
 getSessionSets :: Session -> IO Session
 getSessionSets ses = do
