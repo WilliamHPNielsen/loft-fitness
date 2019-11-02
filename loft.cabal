@@ -7,7 +7,7 @@ cabal-version: 1.12
 -- hash: 7307b129b37187eefe2024843b4f12f9c6715283afbf107d36c22f4fcd09680e
 
 name:           loft
-version:        0.1.0.0
+version:        0.1.0.1
 description:    Please see the README on GitHub at <https://github.com/WilliamHPNielsen/loft-fitness#readme>
 homepage:       https://github.com/WilliamHPNielsen/loft-fitness#readme
 bug-reports:    https://github.com/WilliamHPNielsen/loft-fitness/issues
