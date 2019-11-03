@@ -1,6 +1,7 @@
 module Display
   ( displaySession  
   , prettifySession
+  , displayLogFile
   ) where
 
 import SessionTypes
@@ -40,3 +41,16 @@ prettifySession ses = concat $ intersperse "\n" [a, b, c, d]
         ms = maximum [maximum . map length $ ws, maximum. map length $ rs]
         c = lineBuilder ws ms "|"
         d = lineBuilder rs ms "|"
+
+printStrings :: [String] -> IO ()
+printStrings [] = return ()
+printStrings (x:xs) = do
+  putStrLn x
+  printStrings xs
+
+displayLogFile :: FilePath -> IO ()
+displayLogFile path = do
+  sessions <- readLogFile path
+  let sessionstrings = map prettifySession sessions
+  printStrings sessionstrings
+
