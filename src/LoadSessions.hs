@@ -1,7 +1,7 @@
-module LoadSessions (
-  readLogFile,
-  readSession,
-  extractFromSets
+module LoadSessions
+  ( readLogFile
+  , readSession
+  , extractFromSets
   ) where
 
 import System.IO
