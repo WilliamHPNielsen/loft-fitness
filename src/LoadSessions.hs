@@ -5,11 +5,13 @@ module LoadSessions
   , tryToReadLogFile
   , sessionStringValidator
   , SessionStringValidity (..)
+  , validateLogFile
   ) where
 
 import System.IO
 import SessionTypes
 import Text.Read
+import Data.List
 
 data SessionStringValidity = Valid | Invalid deriving (Show, Eq)
 
@@ -31,6 +33,14 @@ tryToReadLogFile :: FilePath -> IO [SessionStringValidity]
 tryToReadLogFile filename = do
   contents <- readFile filename
   return $ fmap sessionStringValidator $ lines contents
+
+validateLogFile :: FilePath -> IO ()
+validateLogFile filename = do
+  contents <- readFile filename
+  let invalidlines = elemIndices Invalid $ (map sessionStringValidator $ lines contents)
+  case invalidlines of
+    [] -> putStrLn "Valid log file"
+    _ -> putStrLn ("Invalid log file; problems on line(s) " ++ intercalate ", " (map (\i -> show (i + 1)) invalidlines))
 
 readLogFile :: FilePath -> IO [Session]
 readLogFile filename = do
