@@ -2,6 +2,7 @@ module Display
   ( displaySession  
   , prettifySession
   , displayLogFile
+  , displayOneKindFromLogfile
   ) where
 
 import SessionTypes
@@ -76,3 +77,11 @@ displayLogFile path = do
   groupedSessions <- fmap groupSessionsByDate $ readLogFile path
   let sessionStrings = prettifySessionGroup groupedSessions
   printStrings sessionStrings
+
+displayOneKindFromLogfile :: FilePath -> String -> IO ()
+displayOneKindFromLogfile path k = do
+  sessions <- readLogFile path
+  let groupedSessions = groupSessionsByDate . (getSessionsOfKind k) $ sessions
+  let sessionStrings = prettifySessionGroup groupedSessions
+  printStrings sessionStrings
+  
