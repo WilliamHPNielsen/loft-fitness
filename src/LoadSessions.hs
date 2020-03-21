@@ -6,6 +6,7 @@ module LoadSessions
   , sessionStringValidator
   , SessionStringValidity (..)
   , validateLogFile
+  , getSessionsOfKind
   ) where
 
 import System.IO
@@ -49,4 +50,10 @@ readLogFile filename = do
 
 extractFromSets :: ( TrainingSet -> a) -> Session -> [a]
 extractFromSets property ses = map property $ sets ses
+
+isKind :: String -> Session -> Bool
+isKind k ses = kind ses == k
+
+getSessionsOfKind :: String -> [Session] -> [Session]
+getSessionsOfKind k ses = filter (isKind k) ses
 
