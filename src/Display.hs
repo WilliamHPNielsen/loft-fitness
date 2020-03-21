@@ -51,7 +51,7 @@ prettifySessionGroup' date lses =
 
 accum :: [String] -> String -> [Session] -> ([String], Maybe c)
 accum a key lses =
-  (a ++ [datehdr] ++ (List.map prettifySession lses), Nothing)
+  (a ++ [datehdr] ++ (List.map prettifySession $ reverse lses), Nothing)
   where datehdr = "\n>>>>>>>>" ++ key ++ "<<<<<<<<\n"
 
 prettifySessionGroup :: Map.Map String [Session] -> [String]
@@ -64,15 +64,15 @@ printStrings (x:xs) = do
   putStrLn x
   printStrings xs
 
-displayLogFile :: FilePath -> IO ()
-displayLogFile path = do
+displayLogFile2 :: FilePath -> IO ()
+displayLogFile2 path = do
   sessions <- readLogFile path
   let sessionstrings = List.map prettifySession sessions
   printStrings sessionstrings
 
 -- WIP
-displayLogFile2 :: FilePath -> IO ()
-displayLogFile2 path = do
+displayLogFile :: FilePath -> IO ()
+displayLogFile path = do
   groupedSessions <- fmap groupSessionsByDate $ readLogFile path
   let sessionStrings = prettifySessionGroup groupedSessions
   printStrings sessionStrings
