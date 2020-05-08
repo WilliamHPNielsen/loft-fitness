@@ -9,9 +9,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: stack upgrade
-  displayName: 'Prepare stack'
 
-- script: stack build
-  displayName: 'Build the loft package'
+  - bash: stack build
+    displayName: 'Build the loft package'
 
+  - script: stack test
+    displayName: 'Run the tests'
